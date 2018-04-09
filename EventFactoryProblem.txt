@@ -1,0 +1,21 @@
+
+You have just inherited an event factory, where events are constantly being created by workers. 
+Workers can only create certain events (Register, Arrive, SubmitForm, ClickLink, GoBack).
+
+These events occur as a series for each worker, where no 2 events can be created simultaneously by a worker. 
+There are however, many workers that are creating events simultaneously.
+
+The managers of the factory would like a way to view the events, filter through them, and search the data using AngularJS. 
+The managers will be the only users of the system and have specified that they want the ability to filter by timeframe. 
+If either the start or end time is omitted, then all events after the start time or before the end time are returned. 
+Otherwise if both are specified then all events between the start and end times inclusive should be returned. 
+
+Along with filtering by time, a manager should be able to filter by event type and search for all events by worker. 
+Finally, a manager wants to be able to specify a sequence of up to 3 events that can be used to search for all instances where that sequence of events occurs.
+
+A collection of events has been provided as a separate JSON file, which you should use to test your application.
+
+Please provide an Angular (minimum version 2.0) project tar file for your solution to this problem and make sure that the code you provide can be run using the "npm start" command. 
+You should also include any tests that you create to validate your solution.  
+Please state any assumptions you made in order to arrive at your solution.  
+Your application need only run in the latest version of Chrome.
