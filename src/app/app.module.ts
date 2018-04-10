@@ -10,6 +10,7 @@ import { EventPipe } from './shared/event.pipe';
 import { FormsModule } from '@angular/forms';
 import { IdPipe } from './shared/id.pipe';
 import { TimePipe } from './shared/time.pipe';
+import { SequencePipe } from './shared/sequence.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TimePipe } from './shared/time.pipe';
     EventFactoryComponent,
     EventPipe,
     IdPipe,
-    TimePipe
+    TimePipe,
+    SequencePipe
   ],
   imports: [
     BrowserModule,

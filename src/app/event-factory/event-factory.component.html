@@ -12,12 +12,46 @@
           </div>
           <div class="form-group">
             <label>Filter by Event</label>
-            <input type="text" class="form-control" placeholder="REGISTER" [(ngModel)]="eventModel" name="eventModel">
+            <select class="form-control" [(ngModel)]="eventModel" name="eventModel">
+              <option value="default">All</option>
+              <option value="REGISTER">REGISTER</option>
+              <option value="ARRIVE">ARRIVE</option>
+              <option value="SUBMIT_FORM">SUBMIT_FORM</option>
+              <option value="GO_BACK">GO_BACK</option>
+              <option value="CLICK_LINK">CLICK_LINK</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Filter by Date</label>
             <input type="datetime-local" class="form-control" placeholder="3/29/16, 12:00 PM" [(ngModel)]="startTime" name="startTime">
             <input type="datetime-local" class="form-control" placeholder="3/29/16, 1:00 PM" [(ngModel)]="endTime" name="endTime">
+          </div>
+          <div class="form-group">
+            <label>Filter by Sequence</label>
+            <select class="form-control" [(ngModel)]="seqModel1" name="seqModel1">
+              <option value="default">Any</option>
+              <option value="REGISTER">REGISTER</option>
+              <option value="ARRIVE">ARRIVE</option>
+              <option value="SUBMIT_FORM">SUBMIT_FORM</option>
+              <option value="GO_BACK">GO_BACK</option>
+              <option value="CLICK_LINK">CLICK_LINK</option>
+            </select>
+            <select class="form-control" [(ngModel)]="seqModel2" name="seqModel2">
+              <option value="default">Any</option>
+              <option value="REGISTER">REGISTER</option>
+              <option value="ARRIVE">ARRIVE</option>
+              <option value="SUBMIT_FORM">SUBMIT_FORM</option>
+              <option value="GO_BACK">GO_BACK</option>
+              <option value="CLICK_LINK">CLICK_LINK</option>
+            </select>
+            <select class="form-control" [(ngModel)]="seqModel3" name="seqModel3">
+              <option value="default">Any</option>
+              <option value="REGISTER">REGISTER</option>
+              <option value="ARRIVE">ARRIVE</option>
+              <option value="SUBMIT_FORM">SUBMIT_FORM</option>
+              <option value="GO_BACK">GO_BACK</option>
+              <option value="CLICK_LINK">CLICK_LINK</option>
+            </select>
           </div>
           <div class="mx-auto my-3">
             <button class="btn btn-outline-primary">Submit</button>
@@ -60,7 +94,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let event of filteredEvents | event: eventModel | id: idModel | time: startTime:endTime; let i = index">
+          <tr *ngFor="let event of filteredEvents | event: eventModel | id: idModel | time: startTime:endTime | sequence: seqModel1:seqModel2:seqModel3; let i = index">
             <th>
               {{i + 1}}
             </th>

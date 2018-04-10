@@ -9,8 +9,11 @@ export class EventPipe implements PipeTransform {
     if (!events) { return []; }
     if (!search) { return events; }
 
-    search = search.toUpperCase();
+    if (search === 'default') {
+      return events;
+    } else {
     return events.filter(event => event.event.includes(search));
+    }
   }
 
 }
