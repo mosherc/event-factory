@@ -2,8 +2,8 @@
   overflow-x: scroll;
 
   a {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 6.5px;
+    padding-right: 6.5px;
   }
 
   li:first-child {
@@ -12,6 +12,10 @@
   li:last-child {
     margin-right: auto;
   }
+}
+
+input[type="datetime-local"] {
+  // width: 200px;
 }
 
 ::-webkit-scrollbar {
