@@ -20,7 +20,7 @@ export class SequencePipe implements PipeTransform {
             return (event.event === event3 && events[i-1].event === event2 && events[i-2].event === event1);
           });
         } else {
-          const sub = events.filter((event, i) => {
+          return events.filter((event, i) => {
             return (event.event === event2 && events[i-1].event === event1) || (event.event === event1 && events[i+1].event === event2);
           });
         }
