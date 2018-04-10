@@ -10,6 +10,9 @@ export class SequencePipe implements PipeTransform {
 
     console.log(event1+event2+event3);
 
+    // Specify a sequence of up to 3 events that can be used to search for all instances where that sequence of events occurs.
+
+
     if (event1) {
       if (event2) {
         if (event3) {
