@@ -49,8 +49,9 @@
           <div class="form-group">
             <label>Results</label>
             <div>
-              <label class="form-subtitle">{{ (events | id: idModel | time: startTime:endTime | sequence: seqModel1:seqModel2:seqModel3)?.length }}</label>
+              <label class="form-subtitle">{{ sorted ? sortFilteredEvents?.length : filteredEvents?.length }}</label>
             </div>
+            <button (click)="filterData()" class="btn btn-primary">Filter</button>
           </div>
         </form>
       </div>
@@ -90,9 +91,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr #filterData *ngFor="let event of filteredEvents | id: idModel | time: startTime:endTime | sequence: seqModel1:seqModel2:seqModel3; let i = index">
+          <tr #filterData *ngFor="let event of filteredEventsPage; let i = index">
             <th>
-              {{i + 1}}
+              {{i + 1 + (currPage - 1) * 500}}
             </th>
             <td>
               {{event.user_id}}
