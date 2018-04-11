@@ -15,6 +15,12 @@ export class EventFactoryComponent implements OnInit {
   public eventsPerPage = 500;
   public currPage = 1;
   public sorted = false;
+  public idModel;
+  public startTime;
+  public endTime;
+  public seqModel1;
+  public seqModel2;
+  public seqModel3;
 
   constructor(private _eventService: EventService) { }
 
@@ -26,6 +32,7 @@ export class EventFactoryComponent implements OnInit {
     this._eventService.getEvents().subscribe(
       data => {
         this.events = data;
+        this.filteredEvents = data;
         this.sortedEvents = [...this.events].sort((a, b) => a.created_at - b.created_at);
         this.getPage(1);
         let numPages = Math.ceil(this.events.length / this.eventsPerPage);
