@@ -7,18 +7,12 @@ import { EventFactoryComponent } from './event-factory/event-factory.component';
 import { EventService } from './event-factory/event.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IdPipe } from './shared/id.pipe';
-import { TimePipe } from './shared/time.pipe';
-import { SequencePipe } from './shared/sequence.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EventFactoryComponent,
-    IdPipe,
-    TimePipe,
-    SequencePipe
   ],
   imports: [
     BrowserModule,
