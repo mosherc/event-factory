@@ -20,7 +20,6 @@ export class EventFactoryComponent implements OnInit {
 
   ngOnInit() {
     this.getEvents();
-    console.log(this.events);
   }
 
   getEvents() {

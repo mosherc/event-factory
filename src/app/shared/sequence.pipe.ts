@@ -12,7 +12,6 @@ export class SequencePipe implements PipeTransform {
       events.length === pattern.length && events.every((event, i) => matches(event, pattern[i]));
 
     // Specify a sequence of up to 3 events that can be used to search for all instances where that sequence of events occurs.
-    console.log(pattern);
 
     switch (pattern.length) {
       case 0:
@@ -29,25 +28,5 @@ export class SequencePipe implements PipeTransform {
           matchesPattern(events.slice(i - 1, i + 2), pattern) ||
           matchesPattern(events.slice(i - 2, i + 1), pattern));
     }
-
-
-    // if (event1) {
-    //   if (event2) {
-    //     if (event3) {
-    //       return events.filter((event, i) => {
-    //         return (event.event === event3 && events[i-1].event === event2 && events[i-2].event === event1);
-    //       });
-    //     } else {
-    //       return events.filter((event, i) => {
-    //         return (event.event === event2 && events[i-1].event === event1) || (event.event === event1 && events[i+1].event === event2);
-    //       });
-    //     }
-    //   } else {
-    //     return events.filter((event, i) => event.event === event1);
-    //   }
-    // } else {
-    //   return events;
-    // }
   }
-
 }
