@@ -11,13 +11,11 @@ export class EventFactoryComponent implements OnInit {
   public events;
   public filteredEvents;
   public filteredEventsPage;
-  public sortedEvents;
-  public sortFilteredEvents;
   public pages: number[];
   public eventsPerPage: number = 500;
   public currPage: number = 1;
   public numPages: number;
-  public sorted: boolean = false;
+  public sortAscending: boolean = true;
   public idModel: number;
   public startTime: Date;
   public endTime: Date;
@@ -39,9 +37,8 @@ export class EventFactoryComponent implements OnInit {
       err => console.error(err),
       () => {
         console.log('events loaded');
+        this.events = this.events.sort((a, b) => a.created_at - b.created_at);
         this.filteredEvents = [...this.events];
-        this.sortedEvents = [...this.events].sort((a, b) => a.created_at - b.created_at);
-        this.sortFilteredEvents = [...this.sortedEvents];
         this.numPages = this.getNumPages();
         this.getPage(1);
         this.pages = Array.from(Array(this.numPages)).map((x, i) => i + 1);
@@ -50,7 +47,7 @@ export class EventFactoryComponent implements OnInit {
   }
 
   getNumPages() {
-    const lengthOfEvents = this.sorted ? this.sortFilteredEvents.length : this.filteredEvents.length;
+    const lengthOfEvents = this.filteredEvents.length;
     const numberOfPages = Math.ceil(lengthOfEvents / this.eventsPerPage);
     this.pages = Array.from(Array(numberOfPages)).map((x, i) => i + 1);
     return numberOfPages;
@@ -61,26 +58,23 @@ export class EventFactoryComponent implements OnInit {
     const min = Math.max(n - 1) * this.eventsPerPage;
     const max = n * this.eventsPerPage;
     this.currPage = n;
-    this.filteredEventsPage = this.sorted ? this.sortFilteredEvents.slice(min, max) : this.filteredEvents.slice(min, max);
+    this.filteredEventsPage = this.filteredEvents.slice(min, max);
   }
 
   sortData() {
-    this.sorted = this.sorted ? false : true;
-    this.filterData();
+    this.sortAscending = this.sortAscending ? false : true;
+    this.filteredEvents = this.sortAscending ? this.filteredEvents.sort((a, b) => a.created_at - b.created_at) :
+                                               this.filteredEvents.sort((a, b) => b.created_at - a.created_at);
+    this.events = this.sortAscending ? this.events.sort((a, b) => a.created_at - b.created_at) :
+                                       this.events.sort((a, b) => b.created_at - a.created_at);
+    //this.filterData();
     this.getPage();
   }
 
   filterData() {
-    if (this.sorted) {
-      console.log(this.idModel);
-      this.sortFilteredEvents = this.transformTime(this.sortedEvents, this.startTime, this.endTime);
-      this.sortFilteredEvents = this.transformId(this.sortFilteredEvents, this.idModel);
-      this.sortFilteredEvents = this.transformSeq(this.sortFilteredEvents, this.seqModel1, this.seqModel2, this.seqModel3);
-    } else {
-      this.filteredEvents = this.transformTime(this.events, this.startTime, this.endTime);
-      this.filteredEvents = this.transformId(this.filteredEvents, this.idModel);
-      this.filteredEvents = this.transformSeq(this.filteredEvents, this.seqModel1, this.seqModel2, this.seqModel3);
-    }
+    this.filteredEvents = this.transformTime(this.events, this.startTime, this.endTime);
+    this.filteredEvents = this.transformId(this.filteredEvents, this.idModel);
+    this.filteredEvents = this.transformSeq(this.filteredEvents, this.seqModel1, this.seqModel2, this.seqModel3);
     this.numPages = this.getNumPages();
     this.getPage();
   }

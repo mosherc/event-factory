@@ -86,7 +86,9 @@
             </th>
             <th>
               Timestamp
-              <button class="btn btn-sm btn-outline-primary float-right" (click)="sortData()">Sort</button>
+              <button class="btn btn-sm btn-outline-primary float-right" (click)="sortData()">Sort 
+                <i [ngClass]="sortAscending ? 'fas fa-sort-up' : 'fas fa-sort-down'"></i>
+              </button>
             </th>
           </tr>
         </thead>
@@ -102,7 +104,7 @@
               {{event.event}}
             </td>
             <td>
-              {{event.created_at | date:'short'}}
+              {{event.created_at | date:'MMM d, yyyy - HH:mm:ss.SSS'}}
             </td>
           </tr>
         </tbody>
