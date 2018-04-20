@@ -77,12 +77,9 @@ export class EventFactoryComponent implements OnInit {
   /* This method will swap the sorting between ascending and descending
   It sorts the unfiltered data too so it is in sync when filters are removed */
   sortData() {
-
     this.sortAscending = this.sortAscending ? false : true;
-    this.filteredEvents = this.sortAscending ? this.filteredEvents.sort(this.ascending) :
-                                               this.filteredEvents.sort(this.descending);
-    this.events = this.sortAscending ? this.events.sort(this.ascending) :
-                                       this.events.sort(this.descending);
+    this.filteredEvents = this.sortAscending ? this.filteredEvents.sort(this.ascending) : this.filteredEvents.sort(this.descending);
+    this.events = this.sortAscending ? this.events.sort(this.ascending) : this.events.sort(this.descending);
     this.getPage();
   }
 
