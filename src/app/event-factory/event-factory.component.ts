@@ -71,6 +71,7 @@ export class EventFactoryComponent implements OnInit {
     const min = Math.max(n - 1) * this.eventsPerPage;
     const max = n * this.eventsPerPage;
     this.currPage = n;
+    // variable contains events for page n only
     this.filteredEventsPage = this.filteredEvents.slice(min, max);
   }
 
